@@ -7,8 +7,7 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
-  // add other feature module routes here
-  { path: '**', redirectTo: 'auth' }, // redirect to auth if path not found
+  { path: '**', redirectTo: 'auth' },
 ];
 
 @NgModule({
