@@ -4,7 +4,7 @@
 }
 
 router-outlet {
-  padding-bottom: 64px; /* height of the footer */
+  padding-bottom: 56px; /* height of the footer */
   box-sizing: border-box;
 }
 
@@ -13,5 +13,5 @@ app-footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 64px; /* adjust this height to match the height of the footer */
+  height: 56px; /* adjust this height to match the height of the footer */
 }
