@@ -1,0 +1,17 @@
+.wrapper {
+  position: relative;
+  min-height: 100%;
+}
+
+router-outlet {
+  padding-bottom: 64px; /* height of the footer */
+  box-sizing: border-box;
+}
+
+app-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 64px; /* adjust this height to match the height of the footer */
+}
