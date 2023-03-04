@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -35,5 +40,13 @@ export class LoginComponent implements OnInit {
     this.snackBar.open(`Logged in with email: ${email}`, '', {
       duration: 2000,
     });
+  }
+
+  get email(): FormControl {
+    return this.loginForm.get('email') as FormControl;
+  }
+
+  get password(): FormControl {
+    return this.loginForm.get('password') as FormControl;
   }
 }
