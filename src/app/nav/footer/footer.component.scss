@@ -1,0 +1,8 @@
+mat-toolbar {
+  display: flex; /* use flexbox to center the content */
+  justify-content: center; /* center the content horizontally */
+  width: 100%; /* set the width to 100% of the parent element */
+  span {
+    font-size: 10px;
+  }
+}

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   public getCurrentYear(): string {
-    const startDate: number = 2023;
+    const startDate: number = 2022;
     const date: number = new Date().getFullYear();
 
     if (date !== startDate) {
