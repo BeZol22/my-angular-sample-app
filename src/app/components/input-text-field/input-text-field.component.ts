@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-input-text-field',
@@ -13,6 +13,8 @@ export class InputTextFieldComponent {
   @Input() type: string = 'text';
   @Input() minLength: number = 0;
   @Input() maxLength: number = Infinity;
+  @Input() pattern: RegExp | undefined;
+  @Input() passwordControl: FormControl | undefined;
 
   get control(): AbstractControl {
     return this.form.controls[this.controlName];

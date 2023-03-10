@@ -4,6 +4,24 @@
   <mat-error *ngIf="control.hasError('required')">
     {{ label }} is required.
   </mat-error>
+  <mat-error *ngIf="control.hasError('pattern')">
+    {{ label }} must match the pattern: {{ pattern }}
+  </mat-error>
+  <mat-error *ngIf="control.hasError('regex1')">
+    Password must contain at least one lowercase character.
+  </mat-error>
+  <mat-error *ngIf="control.hasError('regex2')">
+    Password must contain at least one uppercase character.
+  </mat-error>
+  <mat-error *ngIf="control.hasError('regex3')">
+    Password must contain at least one digit.
+  </mat-error>
+  <mat-error *ngIf="control.hasError('regex4')">
+    Password must contain at least one special character.
+  </mat-error>
+  <mat-error *ngIf="control.hasError('regex5')">
+    Password must be at least 8 characters long.
+  </mat-error>
   <mat-error *ngIf="control.hasError('email')">
     Invalid email format.
   </mat-error>
