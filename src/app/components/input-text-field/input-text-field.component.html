@@ -1,0 +1,16 @@
+<mat-form-field [formGroup]="form">
+  <mat-label>{{ label }}</mat-label>
+  <input matInput [formControlName]="controlName" [type]="type" />
+  <mat-error *ngIf="control.hasError('required')">
+    {{ label }} is required.
+  </mat-error>
+  <mat-error *ngIf="control.hasError('email')">
+    Invalid email format.
+  </mat-error>
+  <mat-error *ngIf="control.hasError('minlength')">
+    {{ label }} must be at least {{ minLength }} characters long.
+  </mat-error>
+  <mat-error *ngIf="control.hasError('maxlength')">
+    {{ label }} cannot be more than {{ maxLength }} characters long.
+  </mat-error>
+</mat-form-field>

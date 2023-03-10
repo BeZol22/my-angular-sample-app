@@ -14,7 +14,8 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loginForm!: FormGroup;
+  public loginForm!: FormGroup;
+  public passwordMinLength: number = 8;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,7 +25,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: [
+        '',
+        [Validators.required, Validators.minLength(this.passwordMinLength)],
+      ],
     });
   }
 
