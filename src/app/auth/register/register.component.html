@@ -1,1 +1,22 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <app-input-text-field
+    [form]="registerForm"
+    label="Email"
+    controlName="email"
+  ></app-input-text-field>
+  <app-input-text-field
+    [form]="registerForm"
+    [passwordControl]="password"
+    label="Password"
+    controlName="password"
+    type="password"
+  ></app-input-text-field>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="registerForm.invalid"
+  >
+    Login
+  </button>
+</form>

@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { InputTextFieldComponent } from '../components/input-text-field/input-text-field.component';
+import { NotificationService } from './services/notification.service';
 
 const COMPONENTS = [LoginComponent, RegisterComponent, InputTextFieldComponent];
 
@@ -25,5 +26,6 @@ const COMPONENTS = [LoginComponent, RegisterComponent, InputTextFieldComponent];
     MatButtonModule,
   ],
   // exports: [COMPONENTS],
+  providers: [NotificationService],
 })
 export class AuthModule {}

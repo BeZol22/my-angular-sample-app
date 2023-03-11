@@ -5,8 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { NotificationService } from '../services/notification.service';
 
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { passwordValidator } from '../services/password.validator';
 
 @Component({
   selector: 'app-login',
@@ -16,47 +17,16 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
 
-  regex1 = /(?=.*[a-z])/; // Must contain at least one lowercase character
-  regex2 = /(?=.*[A-Z])/; // Must contain at least one uppercase character
-  regex3 = /(?=.*\d)/; // Must contain at least one digit
-  regex4 = /(?=.*[@$!%*?&])/; // Must contain at least one special character
-  regex5 = /^.{8,}$/; // Must be at least 8 characters long
-
-  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar) {
-    this.passwordValidator = this.passwordValidator.bind(this);
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private notificationService: NotificationService
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, this.passwordValidator]],
+      password: ['', [Validators.required, passwordValidator]],
     });
-  }
-
-  passwordValidator(control: FormControl) {
-    const password = control.value;
-
-    if (!this.regex1.test(password)) {
-      return { regex1: true };
-    }
-
-    if (!this.regex2.test(password)) {
-      return { regex2: true };
-    }
-
-    if (!this.regex3.test(password)) {
-      return { regex3: true };
-    }
-
-    if (!this.regex4.test(password)) {
-      return { regex4: true };
-    }
-
-    if (!this.regex5.test(password)) {
-      return { regex5: true };
-    }
-
-    return null;
   }
 
   onSubmit(): void {
@@ -67,15 +37,10 @@ export class LoginComponent implements OnInit {
     // Perform login action here
 
     // Notificationmessage for user
-    this.openMatSnackBar(`Logged in with email: ${this.email.value}`, '');
-  }
-
-  // Config for Notificationmessage
-  openMatSnackBar(message: string, action: string) {
-    let config = new MatSnackBarConfig();
-    config.duration = 3000;
-    config.horizontalPosition = 'center';
-    this.snackBar.open(message, action, config);
+    this.notificationService.openMatSnackBar(
+      `Logged in with email: ${this.email.value}`,
+      ''
+    );
   }
 
   // Get FormControls
