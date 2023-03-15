@@ -1,4 +1,9 @@
-import { FormControl } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  ValidationErrors,
+  ValidatorFn,
+} from '@angular/forms';
 
 export function passwordValidator(control: FormControl) {
   const password = control.value;
@@ -30,3 +35,18 @@ export function passwordValidator(control: FormControl) {
 
   return null;
 }
+
+export const confirmPasswordValidator: ValidatorFn = (
+  control: AbstractControl
+): ValidationErrors | null => {
+  const password = control.get('password');
+  const confirmPassword = control.get('confirmPassword');
+
+  if (password && confirmPassword && password.value !== confirmPassword.value) {
+    confirmPassword.setErrors({ confirmPassword: true });
+    return { confirmPassword: true };
+  } else {
+    confirmPassword?.setErrors(null);
+    return null;
+  }
+};

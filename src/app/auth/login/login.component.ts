@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+
 import { NotificationService } from '../services/notification.service';
 
 import { passwordValidator } from '../services/password.validator';
@@ -47,7 +48,6 @@ export class LoginComponent implements OnInit {
   get email(): FormControl {
     return this.loginForm.get('email') as FormControl;
   }
-
   get password(): FormControl {
     return this.loginForm.get('password') as FormControl;
   }

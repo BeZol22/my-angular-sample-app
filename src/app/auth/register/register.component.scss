@@ -1,0 +1,15 @@
+form {
+  margin: 12px 12px 0px;
+  padding-bottom: 64px; /* heigh of the footer */
+  button {
+    margin-top: 22px;
+    margin-bottom: 22px;
+  }
+}
+
+/* adjust styles for screens below 600px width */
+@media (max-width: 600px) {
+  form {
+    padding-bottom: 56px; /* reduce the padding to 56px */
+  }
+}

@@ -1,14 +1,37 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <app-input-text-field
     [form]="registerForm"
+    label="First name"
+    controlName="firstName"
+    [minLength]="nameMinLength"
+  ></app-input-text-field>
+  <app-input-text-field
+    [form]="registerForm"
+    label="Last name"
+    controlName="lastName"
+    [minLength]="nameMinLength"
+  ></app-input-text-field>
+  <app-input-text-field
+    [form]="registerForm"
     label="Email"
     controlName="email"
   ></app-input-text-field>
   <app-input-text-field
     [form]="registerForm"
-    [passwordControl]="password"
+    label="Confirm email"
+    controlName="confirmEmail"
+  ></app-input-text-field>
+  <app-input-text-field
+    class="password"
+    [form]="registerForm"
     label="Password"
     controlName="password"
+    type="password"
+  ></app-input-text-field>
+  <app-input-text-field
+    [form]="registerForm"
+    label="Confirm password"
+    controlName="confirmPassword"
     type="password"
   ></app-input-text-field>
   <button

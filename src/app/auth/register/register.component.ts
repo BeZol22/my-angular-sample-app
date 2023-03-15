@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -8,7 +9,10 @@ import {
 
 import { NotificationService } from '../services/notification.service';
 
-import { passwordValidator } from '../services/password.validator';
+import {
+  confirmPasswordValidator,
+  passwordValidator,
+} from '../services/password.validator';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +21,7 @@ import { passwordValidator } from '../services/password.validator';
 })
 export class RegisterComponent implements OnInit {
   public registerForm!: FormGroup;
+  public nameMinLength: number = 2;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,20 +29,31 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      firstName: [
-        '',
-        [Validators.required, Validators.minLength, Validators.pattern],
-      ],
-      lastName: [
-        '',
-        [Validators.required, Validators.minLength, Validators.pattern],
-      ],
-      email: ['', [Validators.required, Validators.email]],
-      confirmEmail: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, passwordValidator]],
-      confirmPassword: ['', [Validators.required, passwordValidator]],
-    });
+    this.registerForm = this.formBuilder.group(
+      {
+        firstName: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(this.nameMinLength),
+            Validators.pattern(/^[A-Z][a-z]*( [A-Z][a-z]*)*$/),
+          ],
+        ],
+        lastName: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(this.nameMinLength),
+            Validators.pattern(/^[A-Z][a-z]*( [A-Z][a-z]*)*$/),
+          ],
+        ],
+        email: ['', [Validators.required, Validators.email]],
+        confirmEmail: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, passwordValidator]],
+        confirmPassword: ['', [Validators.required]],
+      },
+      { validators: confirmPasswordValidator }
+    );
   }
 
   onSubmit(): void {
@@ -67,7 +83,6 @@ export class RegisterComponent implements OnInit {
   get confirmEmail(): FormControl {
     return this.registerForm.get('confirmEmail') as FormControl;
   }
-
   get password(): FormControl {
     return this.registerForm.get('password') as FormControl;
   }

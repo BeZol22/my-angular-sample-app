@@ -14,9 +14,27 @@ export class InputTextFieldComponent {
   @Input() minLength: number = 0;
   @Input() maxLength: number = Infinity;
   @Input() pattern: RegExp | undefined;
-  @Input() passwordControl: FormControl | undefined;
+
+  constructor() {
+    window.addEventListener('resize', this.handleErrorStyle.bind(this)); // without this the handleErrorStyle() would apply after view resize only if I click again inside the input field
+  }
 
   get control(): AbstractControl {
     return this.form.controls[this.controlName];
+  }
+
+  handleErrorStyle(): string {
+    const errorExists =
+      this.control.hasError('regex1') ||
+      this.control.hasError('regex2') ||
+      this.control.hasError('regex3') ||
+      this.control.hasError('regex4') ||
+      this.control.hasError('regex5');
+
+    if (errorExists) {
+      return window.innerWidth > 389 ? '' : 'margin-bottom: 24px;';
+    } else {
+      return '';
+    }
   }
 }

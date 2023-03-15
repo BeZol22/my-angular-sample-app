@@ -3,11 +3,6 @@
   min-height: 100%;
 }
 
-router-outlet {
-  padding-bottom: 64px; /* height of the footer */
-  box-sizing: border-box;
-}
-
 app-footer {
   position: absolute;
   bottom: 0;
@@ -18,10 +13,6 @@ app-footer {
 
 /* adjust styles for screens below 600px width */
 @media (max-width: 600px) {
-  router-outlet {
-    padding-bottom: 56px; /* reduce the padding to 56px */
-  }
-
   app-footer {
     height: 56px; /* adjust the height to match the footer height */
   }

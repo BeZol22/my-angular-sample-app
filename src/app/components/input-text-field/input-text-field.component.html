@@ -1,11 +1,11 @@
-<mat-form-field [formGroup]="form">
+<mat-form-field [formGroup]="form" [style]="handleErrorStyle()">
   <mat-label>{{ label }}</mat-label>
   <input matInput [formControlName]="controlName" [type]="type" />
   <mat-error *ngIf="control.hasError('required')">
     {{ label }} is required.
   </mat-error>
   <mat-error *ngIf="control.hasError('pattern')">
-    {{ label }} must match the pattern: {{ pattern }}
+    First letter(s) has/have to be capitalized.
   </mat-error>
   <mat-error *ngIf="control.hasError('regex1')">
     Password must contain at least one lowercase character.
@@ -21,6 +21,9 @@
   </mat-error>
   <mat-error *ngIf="control.hasError('regex5')">
     Password must be at least 8 characters long.
+  </mat-error>
+  <mat-error *ngIf="form.hasError('confirmPassword')">
+    Passwords do not match.
   </mat-error>
   <mat-error *ngIf="control.hasError('email')">
     Invalid email format.
