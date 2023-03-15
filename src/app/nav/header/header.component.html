@@ -41,5 +41,19 @@
   </button>
   <span>My Sample App</span>
   <span class="spacer"></span>
-  <button mat-button routerLink="/auth/register">Register</button>
+  <!-- <button mat-button routerLink="/auth/register">Register</button> -->
+  <button
+    mat-button
+    *ngIf="router.url === '/auth/login'"
+    routerLink="/auth/register"
+  >
+    Register
+  </button>
+  <button
+    mat-button
+    *ngIf="router.url === '/auth/register'"
+    routerLink="/auth/login"
+  >
+    Login
+  </button>
 </mat-toolbar>
