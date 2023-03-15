@@ -50,3 +50,18 @@ export const confirmPasswordValidator: ValidatorFn = (
     return null;
   }
 };
+
+export const confirmEmailValidator: ValidatorFn = (
+  control: AbstractControl
+): ValidationErrors | null => {
+  const email = control.get('email');
+  const confirmEmail = control.get('confirmEmail');
+
+  if (email && confirmEmail && email.value !== confirmEmail.value) {
+    confirmEmail.setErrors({ confirmEmail: true });
+    return { confirmEmail: true };
+  } else {
+    confirmEmail?.setErrors(null);
+    return null;
+  }
+};

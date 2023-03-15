@@ -11,6 +11,7 @@ import { NotificationService } from '../services/notification.service';
 import {
   confirmPasswordValidator,
   passwordValidator,
+  confirmEmailValidator,
 } from '../services/password.validator';
 
 @Component({
@@ -55,7 +56,7 @@ export class RegisterComponent implements OnInit {
         password: ['', [Validators.required, passwordValidator]],
         confirmPassword: ['', [Validators.required]],
       },
-      { validators: confirmPasswordValidator }
+      { validators: [confirmPasswordValidator, confirmEmailValidator] }
     );
   }
 
