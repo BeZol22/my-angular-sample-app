@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
             Validators.required,
             Validators.minLength(this.nameMinLength),
             Validators.pattern(
-              /^[A-ZÁÉÚŐÓÜÖÍ][a-záéúőóüöí]*( [A-ZÁÉÚŐÓÜÖÍ][a-záéúőóüöí]*)*$/
+              /^[A-ZÄÁÉÚŐÓÜÖÍ][a-zäáéúőóüöíß]*( [A-ZÄÁÉÚŐÓÜÖÍ][a-zäáéúőóüöíß]*)*$/
             ),
           ],
         ],
@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
             Validators.required,
             Validators.minLength(this.nameMinLength),
             Validators.pattern(
-              /^[A-ZÁÉÚŐÓÜÖÍ][a-záéúőóüöí]*( [A-ZÁÉÚŐÓÜÖÍ][a-záéúőóüöí]*)*$/
+              /^[A-ZÄÁÉÚŐÓÜÖÍ][a-zäáéúőóüöíß]*( [A-ZÄÁÉÚŐÓÜÖÍ][a-zäáéúőóüöíß]*)*$/
             ),
           ],
         ],
