@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -36,7 +35,9 @@ export class RegisterComponent implements OnInit {
           [
             Validators.required,
             Validators.minLength(this.nameMinLength),
-            Validators.pattern(/^[A-Z][a-z]*( [A-Z][a-z]*)*$/),
+            Validators.pattern(
+              /^[A-ZÁÉÚŐÓÜÖÍ][a-záéúőóüöí]*( [A-ZÁÉÚŐÓÜÖÍ][a-záéúőóüöí]*)*$/
+            ),
           ],
         ],
         lastName: [
@@ -44,7 +45,9 @@ export class RegisterComponent implements OnInit {
           [
             Validators.required,
             Validators.minLength(this.nameMinLength),
-            Validators.pattern(/^[A-Z][a-z]*( [A-Z][a-z]*)*$/),
+            Validators.pattern(
+              /^[A-ZÁÉÚŐÓÜÖÍ][a-záéúőóüöí]*( [A-ZÁÉÚŐÓÜÖÍ][a-záéúőóüöí]*)*$/
+            ),
           ],
         ],
         email: ['', [Validators.required, Validators.email]],

@@ -5,10 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { NotificationService } from '../services/notification.service';
-
-import { passwordValidator } from '../services/password.validator';
 
 @Component({
   selector: 'app-login',
@@ -20,13 +19,14 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, passwordValidator]],
+      password: ['', [Validators.required]],
     });
   }
 
@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     }
 
     // Perform login action here
+    this.router.navigate(['/home']);
 
     // Notificationmessage for user
     this.notificationService.openMatSnackBar(

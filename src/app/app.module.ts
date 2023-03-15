@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NavModule } from './nav/nav.module';
+import { HomeComponent } from './pages/home/home.component';
 
 const COMPONENTS = [AppComponent];
 
