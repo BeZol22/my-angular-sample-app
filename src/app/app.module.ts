@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NavModule } from './nav/nav.module';
-import { HomeComponent } from './pages/home/home.component';
+import { StoreModule } from '@ngrx/store';
 
 const COMPONENTS = [AppComponent];
 
@@ -15,6 +15,7 @@ const MODULES = [
   AppRoutingModule,
   BrowserAnimationsModule,
   NavModule,
+  StoreModule.forRoot({}, {}),
 ];
 
 @NgModule({

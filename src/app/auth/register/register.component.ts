@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    // Perform login action here
+    // Perform register action here
 
     // Notificationmessage for user
     this.notificationService.openMatSnackBar(
