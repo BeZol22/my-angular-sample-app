@@ -8,6 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavModule } from './nav/nav.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { reducers, metaReducers } from './state/app.reducer';
+import { AuthEffects } from './auth/state/auth.effects';
+import { AuthModule } from './auth/auth.module';
 
 const COMPONENTS = [AppComponent];
 
@@ -16,12 +19,20 @@ const MODULES = [
   AppRoutingModule,
   BrowserAnimationsModule,
   NavModule,
-  StoreModule.forRoot({}, {}),
+  StoreModule.forRoot(reducers, {
+    metaReducers,
+    runtimeChecks: {
+      strictStateImmutability: true,
+      strictActionImmutability: true,
+    },
+  }),
+  EffectsModule.forRoot([AuthEffects]),
+  AuthModule.forRoot(),
 ];
 
 @NgModule({
   declarations: [COMPONENTS],
-  imports: [MODULES, EffectsModule.forRoot([])],
+  imports: [MODULES],
   providers: [],
   bootstrap: [COMPONENTS],
 })

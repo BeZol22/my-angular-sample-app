@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { CreateUser } from '../models/user.model';
 
 import { NotificationService } from '../services/notification.service';
 
@@ -13,6 +15,7 @@ import {
   passwordValidator,
   confirmEmailValidator,
 } from '../services/password.validator';
+import { AuthActions } from '../state/action-types';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +28,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private store: Store
   ) {}
 
   ngOnInit(): void {
@@ -66,6 +70,14 @@ export class RegisterComponent implements OnInit {
     }
 
     // Perform register action here
+    const userToAdd: CreateUser = {
+      firstName: this.firstName.value,
+      lastName: this.lastName.value,
+      email: this.email.value,
+      password: this.password.value,
+    };
+
+    this.store.dispatch(AuthActions.register({ userToAdd }));
 
     // Notificationmessage for user
     this.notificationService.openMatSnackBar(

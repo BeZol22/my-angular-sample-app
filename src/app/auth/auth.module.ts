@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -12,6 +12,10 @@ import { InputTextFieldComponent } from '../components/input-text-field/input-te
 import { NotificationService } from './services/notification.service';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './state/auth.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './state/auth.effects';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const COMPONENTS = [LoginComponent, RegisterComponent, InputTextFieldComponent];
 
@@ -19,6 +23,7 @@ const COMPONENTS = [LoginComponent, RegisterComponent, InputTextFieldComponent];
   declarations: [COMPONENTS],
   imports: [
     CommonModule,
+    HttpClientModule,
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -27,8 +32,16 @@ const COMPONENTS = [LoginComponent, RegisterComponent, InputTextFieldComponent];
     MatInputModule,
     MatButtonModule,
     StoreModule.forFeature('auth', authReducer),
+    EffectsModule.forFeature([AuthEffects]),
   ],
   // exports: [COMPONENTS],
-  providers: [NotificationService],
+  providers: [NotificationService, AuthService],
 })
-export class AuthModule {}
+export class AuthModule {
+  static forRoot(): ModuleWithProviders<AuthModule> {
+    return {
+      ngModule: AuthModule,
+      providers: [AuthService],
+    };
+  }
+}
