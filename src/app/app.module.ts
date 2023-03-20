@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NavModule } from './nav/nav.module';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 const COMPONENTS = [AppComponent];
 
@@ -20,7 +21,7 @@ const MODULES = [
 
 @NgModule({
   declarations: [COMPONENTS],
-  imports: [MODULES],
+  imports: [MODULES, EffectsModule.forRoot([])],
   providers: [],
   bootstrap: [COMPONENTS],
 })

@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { InputTextFieldComponent } from '../components/input-text-field/input-text-field.component';
 import { NotificationService } from './services/notification.service';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './state/auth.reducer';
 
 const COMPONENTS = [LoginComponent, RegisterComponent, InputTextFieldComponent];
 
@@ -24,6 +26,7 @@ const COMPONENTS = [LoginComponent, RegisterComponent, InputTextFieldComponent];
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    StoreModule.forFeature('auth', authReducer),
   ],
   // exports: [COMPONENTS],
   providers: [NotificationService],
