@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers, metaReducers } from './state/app.reducer';
 import { AuthEffects } from './auth/state/auth.effects';
 import { AuthModule } from './auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 
 const COMPONENTS = [AppComponent];
 
@@ -18,6 +19,7 @@ const MODULES = [
   BrowserModule,
   AppRoutingModule,
   BrowserAnimationsModule,
+  HttpClientModule,
   NavModule,
   StoreModule.forRoot(reducers, {
     metaReducers,
@@ -27,7 +29,7 @@ const MODULES = [
     },
   }),
   EffectsModule.forRoot([AuthEffects]),
-  AuthModule.forRoot(),
+  // AuthModule.forRoot(),
 ];
 
 @NgModule({

@@ -38,10 +38,10 @@ const COMPONENTS = [LoginComponent, RegisterComponent, InputTextFieldComponent];
   providers: [NotificationService, AuthService],
 })
 export class AuthModule {
-  static forRoot(): ModuleWithProviders<AuthModule> {
-    return {
-      ngModule: AuthModule,
-      providers: [AuthService],
-    };
-  }
+  // static forRoot(): ModuleWithProviders<AuthModule> {
+  //   return {
+  //     ngModule: AuthModule,
+  //     providers: [AuthService],
+  //   };
+  // }
 }
