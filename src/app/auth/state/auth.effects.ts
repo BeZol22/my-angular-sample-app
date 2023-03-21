@@ -18,7 +18,9 @@ export class AuthEffects {
           map((res) => {
             console.log('RESPONSE FOR SUCCES: ', res);
 
-            return AuthActions.registerSuccess();
+            return AuthActions.registerSuccess({
+              successMessage: res.body.message,
+            });
           }),
           catchError(async (error) => {
             console.log('RESPONSE FOR ERROR: ', error);

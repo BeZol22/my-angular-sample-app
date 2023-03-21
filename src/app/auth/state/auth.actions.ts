@@ -7,8 +7,8 @@ export const register = createAction(
   props<{ userToAdd: CreateUser }>()
 );
 export const registerSuccess = createAction(
-  '[AUTH] Register Success'
-  // props<{ successMessage: string }>()
+  '[AUTH] Register Success',
+  props<{ successMessage: string }>()
 );
 export const registerFailure = createAction(
   '[AUTH] Register Failure',
@@ -21,8 +21,8 @@ export const login = createAction(
   props<{ loginCredentials: LoginCredentials }>()
 );
 export const loginSuccess = createAction(
-  '[AUTH] Login Success'
-  // props<{ successMessage: string }>()
+  '[AUTH] Login Success',
+  props<{ successMessage: string }>()
 );
 export const loginFailure = createAction(
   '[AUTH] Login Failure',

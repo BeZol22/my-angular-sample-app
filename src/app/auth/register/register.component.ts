@@ -5,7 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { take } from 'rxjs';
 import { CreateUser } from '../models/user.model';
 
 import { NotificationService } from '../services/notification.service';
@@ -25,11 +27,13 @@ import { AuthActions } from '../state/action-types';
 export class RegisterComponent implements OnInit {
   public registerForm!: FormGroup;
   public nameMinLength: number = 2;
+  private notificationMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private notificationService: NotificationService,
-    private store: Store
+    private store: Store,
+    private actions$: Actions
   ) {}
 
   ngOnInit(): void {
@@ -80,10 +84,12 @@ export class RegisterComponent implements OnInit {
     this.store.dispatch(AuthActions.register({ userToAdd }));
 
     // Notificationmessage for user
-    this.notificationService.openMatSnackBar(
-      `Registered with email: ${this.email.value}`,
-      ''
-    );
+    this.actions$
+      .pipe(ofType(AuthActions.registerSuccess), take(1))
+      .subscribe((res) => {
+        this.notificationMessage = res.successMessage;
+        this.notificationService.openMatSnackBar(this.notificationMessage, '');
+      });
   }
 
   // Get FormControls
