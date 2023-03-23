@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { take } from 'rxjs';
+import { skip, take } from 'rxjs';
 import { CreateUser } from '../models/user.model';
 
 import { NotificationService } from '../services/notification.service';
@@ -18,6 +18,7 @@ import {
   confirmEmailValidator,
 } from '../services/password.validator';
 import { AuthActions } from '../state/action-types';
+import { getErrorMessage } from '../state/auth.selector';
 
 @Component({
   selector: 'app-register',
@@ -83,6 +84,8 @@ export class RegisterComponent implements OnInit {
 
     this.store.dispatch(AuthActions.register({ userToAdd }));
 
+    // Succesfull
+
     // Notificationmessage for user
     this.actions$
       .pipe(ofType(AuthActions.registerSuccess), take(1))
@@ -90,6 +93,37 @@ export class RegisterComponent implements OnInit {
         this.notificationMessage = res.successMessage;
         this.notificationService.openMatSnackBar(this.notificationMessage, '');
       });
+
+    // Unsuccesfull
+
+    // Notificationmessage for user
+    this.actions$.pipe(ofType(AuthActions.registerFailure)).subscribe((res) => {
+      this.notificationMessage = '';
+      this.notificationMessage = res.errorMessage;
+
+      // Show error below email if email already exists
+      if (
+        res.errorMessage ===
+        `User with email "${this.email.value}" already exists.`
+      ) {
+        this.registerForm.get('email')?.setErrors({
+          emailAlreadyExists: res.errorMessage,
+        });
+      }
+      // Show error message for server validation of email IsEmail(), which comes as an array
+      if (res.errorMessage[0] === `Invalid email format.`) {
+        this.registerForm.get('email')?.setErrors({
+          invalidEmail: res.errorMessage, // here and for notification message it's ok without [0]
+        });
+      }
+
+      this.notificationService.openMatSnackBar(this.notificationMessage, '');
+    });
+
+    // this.store.select(getErrorMessage).subscribe((msg) => {
+    //   console.log('MSG OF ERROR: ', msg);
+    //   this.errorMessage = msg;
+    // });
   }
 
   // Get FormControls

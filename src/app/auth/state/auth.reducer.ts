@@ -57,3 +57,5 @@ export const authReducer = createReducer(
     };
   })
 );
+
+// export const getErrorMessage = (state: AuthState) => state.errorMessage;

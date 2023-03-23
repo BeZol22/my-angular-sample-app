@@ -28,6 +28,12 @@
   <mat-error *ngIf="control.hasError('email')">
     Invalid email format.
   </mat-error>
+  <mat-error *ngIf="control.hasError('emailAlreadyExists')">
+    {{ control.errors!["emailAlreadyExists"] }}
+  </mat-error>
+  <mat-error *ngIf="control.hasError('invalidEmail')">
+    {{ control.errors!["invalidEmail"] }}
+  </mat-error>
   <mat-error *ngIf="form.hasError('confirmEmail')">
     Emails do not match.
   </mat-error>
