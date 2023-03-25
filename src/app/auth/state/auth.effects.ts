@@ -16,16 +16,38 @@ export class AuthEffects {
       switchMap((credentials: CreateUser) => {
         return this.authService.register(credentials).pipe(
           map((res) => {
-            console.log('RESPONSE FOR SUCCES: ', res);
-
+            // console.log('RESPONSE FOR SUCCES: ', res);
             return AuthActions.registerSuccess({
               successMessage: res.body.message,
             });
           }),
           catchError(async (error) => {
+            // console.log('RESPONSE FOR ERROR: ', error);
+            return AuthActions.registerFailure({
+              errorMessage: error.error.message,
+            });
+          })
+        );
+      })
+    )
+  );
+
+  confirmRegister$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.confirmRegister),
+      map((action) => action.token),
+      switchMap((token: string) => {
+        return this.authService.confirmRegistration(token).pipe(
+          map((res) => {
+            // console.log('RESPONSE FOR SUCCES: ', res);
+            return AuthActions.confirmRegisterSuccess({
+              successMessage: res.message,
+            });
+          }),
+          catchError(async (error) => {
             console.log('RESPONSE FOR ERROR: ', error);
 
-            return AuthActions.registerFailure({
+            return AuthActions.confirmRegisterFailure({
               errorMessage: error.error.message,
             });
           })

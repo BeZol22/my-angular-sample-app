@@ -15,6 +15,20 @@ export const registerFailure = createAction(
   props<{ errorMessage: string }>()
 );
 
+// CONFIRM REGISTER
+export const confirmRegister = createAction(
+  '[AUTH] Confirm Register',
+  props<{ token: string }>()
+);
+export const confirmRegisterSuccess = createAction(
+  '[AUTH] Confirm Register Success',
+  props<{ successMessage: string }>()
+);
+export const confirmRegisterFailure = createAction(
+  '[AUTH] Confirm Register Failure',
+  props<{ errorMessage: string }>()
+);
+
 // LOGIN
 export const login = createAction(
   '[AUTH] Login',

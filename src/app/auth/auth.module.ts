@@ -16,8 +16,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './state/auth.effects';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmRegistrationComponent } from './confirm-registration/confirm-registration.component';
 
-const COMPONENTS = [LoginComponent, RegisterComponent, InputTextFieldComponent];
+const COMPONENTS = [
+  LoginComponent,
+  RegisterComponent,
+  InputTextFieldComponent,
+  ConfirmRegistrationComponent,
+];
 
 @NgModule({
   declarations: [COMPONENTS],

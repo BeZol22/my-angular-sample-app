@@ -21,4 +21,10 @@ export class AuthService {
       observe: 'response',
     });
   }
+
+  public confirmRegistration(token: string): Observable<any> {
+    return this.httpClient.post(`${this.URL}/auth/confirm-registration`, {
+      token,
+    });
+  }
 }
