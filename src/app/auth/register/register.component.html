@@ -1,4 +1,8 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<form
+  *ngIf="!this.registerSuccess"
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+>
   <app-input-text-field
     [form]="registerForm"
     label="First name"
@@ -43,3 +47,12 @@
     Register
   </button>
 </form>
+<div *ngIf="this.registerSuccess" class="success-notification mat-elevation-z2">
+  <div class="text-container">
+    <!-- <mat-icon class="close-icon" (click)="this.registerSuccess = false"
+      >close</mat-icon
+    > -->
+    <h1>{{ this.notificationMessage }}</h1>
+    <mat-icon class="success-icon">check_circle_outline</mat-icon>
+  </div>
+</div>

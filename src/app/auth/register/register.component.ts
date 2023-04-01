@@ -28,7 +28,8 @@ import { getErrorMessage } from '../state/auth.selector';
 export class RegisterComponent implements OnInit {
   public registerForm!: FormGroup;
   public nameMinLength: number = 2;
-  private notificationMessage: string = '';
+  public notificationMessage: string = '';
+  public registerSuccess: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -90,6 +91,7 @@ export class RegisterComponent implements OnInit {
     this.actions$
       .pipe(ofType(AuthActions.registerSuccess), take(1))
       .subscribe((res) => {
+        this.registerSuccess = true;
         this.notificationMessage = res.successMessage;
         this.notificationService.openMatSnackBar(this.notificationMessage, '');
       });
@@ -106,13 +108,13 @@ export class RegisterComponent implements OnInit {
         res.errorMessage ===
         `User with email "${this.email.value}" already exists.`
       ) {
-        this.registerForm.get('email')?.setErrors({
+        this.email.setErrors({
           emailAlreadyExists: res.errorMessage,
         });
       }
       // Show error message for server validation of email IsEmail(), which comes as an array
       if (res.errorMessage[0] === `Invalid email format.`) {
-        this.registerForm.get('email')?.setErrors({
+        this.email.setErrors({
           invalidEmail: res.errorMessage, // here and for notification message it's ok without [0]
         });
       }

@@ -17,6 +17,7 @@ export class AuthEffects {
         return this.authService.register(credentials).pipe(
           map((res) => {
             // console.log('RESPONSE FOR SUCCES: ', res);
+
             return AuthActions.registerSuccess({
               successMessage: res.body.message,
             });
