@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
   public registerForm!: FormGroup;
   public nameMinLength: number = 2;
   public notificationMessage: string = '';
+  @Output() registerSuccessChange = new EventEmitter<boolean>();
   public registerSuccess: boolean = false;
 
   constructor(
@@ -92,6 +93,7 @@ export class RegisterComponent implements OnInit {
       .pipe(ofType(AuthActions.registerSuccess), take(1))
       .subscribe((res) => {
         this.registerSuccess = true;
+        this.registerSuccessChange.emit(this.registerSuccess);
         this.notificationMessage = res.successMessage;
         this.notificationService.openMatSnackBar(this.notificationMessage, '');
       });

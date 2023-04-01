@@ -1,8 +1,15 @@
 form {
+  max-width: 690px;
   margin: 12px 12px 0px;
   button {
     margin-top: 22px;
     margin-bottom: 22px;
+  }
+}
+
+@media (min-width: 650px) {
+  form {
+    margin: 20px auto 0px;
   }
 }
 

@@ -41,6 +41,11 @@ export class AuthEffects {
         return this.authService.confirmRegistration(token).pipe(
           map((res) => {
             // console.log('RESPONSE FOR SUCCES: ', res);
+            if (res.message === 'Invalid or expired confirmation link.') {
+              return AuthActions.confirmRegisterFailure({
+                errorMessage: res.message,
+              });
+            }
             return AuthActions.confirmRegisterSuccess({
               successMessage: res.message,
             });

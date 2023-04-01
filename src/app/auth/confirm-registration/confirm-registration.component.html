@@ -1,1 +1,39 @@
-<p>confirm-registration works!</p>
+<div
+  *ngIf="this.confirmationSuccessMessage"
+  class="success-notification mat-elevation-z2"
+>
+  <div class="text-container">
+    <!-- <mat-icon class="close-icon" (click)="this.confirmationSuccess = false"
+      >close</mat-icon
+    > -->
+    <h1>
+      {{ this.confirmationSuccessMessage }}
+    </h1>
+    <mat-icon class="success-icon">check_circle_outline</mat-icon>
+  </div>
+</div>
+<div
+  *ngIf="this.confirmationErrorMessage"
+  class="error-notification mat-elevation-z2"
+>
+  <div class="text-container">
+    <h1>
+      {{ this.confirmationErrorMessage }}
+    </h1>
+    <mat-icon class="error-icon">highlight_off</mat-icon>
+  </div>
+</div>
+<h1 class="action-container">
+  {{
+    this.confirmationSuccessMessage
+      ? "Login"
+      : this.confirmationErrorMessage
+      ? "Register"
+      : null
+  }}
+</h1>
+<app-login *ngIf="this.confirmationSuccessMessage"></app-login>
+<app-register
+  *ngIf="this.confirmationErrorMessage || this.registerSuccess"
+  (registerSuccessChange)="onRegisterSuccessChange($event)"
+></app-register>
