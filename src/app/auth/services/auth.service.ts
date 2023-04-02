@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CreateUser } from '../models/user.model';
+import { CreateUser, LoginCredentials } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +12,15 @@ export class AuthService {
   errorMessage: string = '';
 
   constructor(private httpClient: HttpClient) {}
+
+  public login(userToLogin: LoginCredentials): Observable<any> {
+    const url = `${this.URL}/auth/login`;
+    // const params = JSON.stringify(userToAdd);
+    const params = userToLogin;
+    return this.httpClient.post<LoginCredentials>(url, params, {
+      observe: 'response',
+    });
+  }
 
   public register(userToAdd: CreateUser): Observable<any> {
     const url = `${this.URL}/auth/register`;

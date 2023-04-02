@@ -32,7 +32,7 @@ export const confirmRegisterFailure = createAction(
 // LOGIN
 export const login = createAction(
   '[AUTH] Login',
-  props<{ loginCredentials: LoginCredentials }>()
+  props<{ userToLogin: LoginCredentials }>()
 );
 export const loginSuccess = createAction(
   '[AUTH] Login Success',
