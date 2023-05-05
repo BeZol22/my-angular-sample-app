@@ -1,8 +1,16 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button aria-label="Menu">
+  <button
+    *ngIf="
+      router.url === '/auth/register' ||
+      router.url === '/auth/login' ||
+      isConfirmationPage
+    "
+    mat-icon-button
+    aria-label="Menu"
+  >
     <mat-icon>menu</mat-icon>
   </button>
-  <span>My Sample App</span>
+  <span class="logo">My Sample App</span>
   <span class="spacer"></span>
   <button
     mat-button
@@ -17,5 +25,17 @@
     routerLink="/auth/register"
   >
     Register
+  </button>
+  <button
+    *ngIf="
+      router.url != '/auth/register' &&
+      router.url != '/auth/login' &&
+      !isConfirmationPage
+    "
+    mat-icon-button
+    aria-label="Menu"
+    (click)="onMenuButtonClick()"
+  >
+    <mat-icon>menu</mat-icon>
   </button>
 </mat-toolbar>

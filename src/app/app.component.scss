@@ -1,18 +1,34 @@
+// html, body {
+//   height: 100%;
+//   margin: 0;
+// }
+
 .wrapper {
   position: relative;
-  min-height: 100%;
+  min-height: 100vh; /* use viewport height instead of percentage */
+}
+
+mat-sidenav {
+  width: 75vw;
+}
+
+mat-sidenav-content {
+  padding-bottom: 64px; /* height of the footer */
 }
 
 app-footer {
   position: absolute;
   bottom: 0;
-  left: 0;
+  // left: 0;
   width: 100%;
   height: 64px; /* adjust this height to match the height of the footer */
 }
 
 /* adjust styles for screens below 600px width */
-@media (max-width: 600px) {
+@media (max-width: 599px) {
+  mat-sidenav-content {
+    padding-bottom: 56px; /* reduce the padding to 56px */
+  }
   app-footer {
     height: 56px; /* adjust the height to match the footer height */
   }

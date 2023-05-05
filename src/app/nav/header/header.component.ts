@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  @Output() menuButtonClick = new EventEmitter<void>();
   public isConfirmationPage: boolean = false;
 
   constructor(public router: Router, private route: ActivatedRoute) {}
@@ -22,5 +23,9 @@ export class HeaderComponent implements OnInit {
         this.isConfirmationPage = false;
       }
     });
+  }
+
+  onMenuButtonClick(): void {
+    this.menuButtonClick.emit();
   }
 }

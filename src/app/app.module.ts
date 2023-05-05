@@ -12,8 +12,11 @@ import { reducers, metaReducers } from './state/app.reducer';
 import { AuthEffects } from './auth/state/auth.effects';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const COMPONENTS = [AppComponent];
+
+const MATERIAL_MODULES = [MatSidenavModule];
 
 const MODULES = [
   BrowserModule,
@@ -21,6 +24,7 @@ const MODULES = [
   BrowserAnimationsModule,
   HttpClientModule,
   NavModule,
+  MATERIAL_MODULES,
   StoreModule.forRoot(reducers, {
     metaReducers,
     runtimeChecks: {

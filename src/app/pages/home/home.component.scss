@@ -1,0 +1,25 @@
+form {
+  max-width: 650px;
+  height: calc(100vh - 64px - 64px - 12px);
+  margin: 12px 12px 0px;
+  // padding-bottom: 64px; /* heigh of the footer */
+  button {
+    margin-top: 22px;
+    margin-bottom: 22px;
+  }
+}
+
+/* adjust styles for screens below 600px width */
+@media (max-width: 599px) {
+  form {
+    height: calc(100vh - 56px - 56px - 12px);
+    // padding-bottom: 56px; /* reduce the padding to 56px */
+  }
+}
+
+@media (min-width: 650px) {
+  form {
+    height: calc(100vh - 64px - 64px - 20px);
+    margin: 20px calc((100vw - 650px) / 2 + 12px) 0; /* start at 12px and increase */
+  }
+}
