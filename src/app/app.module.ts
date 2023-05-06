@@ -12,11 +12,21 @@ import { reducers, metaReducers } from './state/app.reducer';
 import { AuthEffects } from './auth/state/auth.effects';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+
+// Angular Material Modules
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 const COMPONENTS = [AppComponent];
 
-const MATERIAL_MODULES = [MatSidenavModule];
+const MATERIAL_MODULES = [
+  MatSidenavModule,
+  MatListModule,
+  MatIconModule,
+  MatButtonModule,
+];
 
 const MODULES = [
   BrowserModule,

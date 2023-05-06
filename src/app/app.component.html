@@ -1,7 +1,45 @@
 <body>
   <div class="wrapper">
     <mat-sidenav-container>
-      <mat-sidenav #sidenav position="end">END</mat-sidenav>
+      <mat-sidenav #sidenav position="end">
+        <div class="sidenav-close">
+          <button
+            class="close-button"
+            mat-icon-button
+            (click)="sidenav.toggle()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <mat-nav-list>
+          <mat-list-item
+            class="sidenav-list-parent"
+            (click)="showSearchSubmenu = !showSearchSubmenu"
+          >
+            <div class="sidenav-list-item-content">
+              <span class="sidenav-list-item-title">Search</span>
+              <span class="spacer"></span>
+              <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+            </div>
+          </mat-list-item>
+          <div class="sidenav-list-divider">
+            <mat-divider></mat-divider>
+          </div>
+          <mat-list-item
+            class="sidenav-list-parent"
+            (click)="showSellSubmenu = !showSellSubmenu"
+          >
+            <div class="sidenav-list-item-content">
+              <span class="sidenav-list-item-title">Sell</span>
+              <span class="spacer"></span>
+              <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+            </div>
+          </mat-list-item>
+          <div class="sidenav-list-divider">
+            <mat-divider></mat-divider>
+          </div>
+        </mat-nav-list>
+      </mat-sidenav>
       <mat-sidenav-content>
         <app-header (menuButtonClick)="sidenav.toggle()"></app-header>
         <router-outlet></router-outlet>

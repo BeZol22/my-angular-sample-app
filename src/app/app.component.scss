@@ -10,6 +10,35 @@
 
 mat-sidenav {
   width: 75vw;
+  .sidenav-close {
+    height: 56px;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 0 0 16px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    justify-content: flex-end;
+  }
+  .sidenav-list-item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .sidenav-list-item-title {
+      // bold the title
+      font-weight: bold;
+    }
+  }
+  .sidenav-list-divider {
+    padding: 0 8px;
+  }
+
+  .spacer {
+    flex-grow: 1;
+    width: 1rem;
+  }
 }
 
 mat-sidenav-content {

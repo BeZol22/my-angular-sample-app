@@ -3,8 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'my-angular-sample-app';
+  showSearchSubmenu: boolean = false;
+  showSellSubmenu: boolean = false;
 }
