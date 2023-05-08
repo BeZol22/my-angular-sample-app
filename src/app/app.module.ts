@@ -18,6 +18,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const COMPONENTS = [AppComponent];
 
@@ -26,6 +27,7 @@ const MATERIAL_MODULES = [
   MatListModule,
   MatIconModule,
   MatButtonModule,
+  MatExpansionModule,
 ];
 
 const MODULES = [

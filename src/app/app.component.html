@@ -12,7 +12,7 @@
           </button>
         </div>
         <mat-nav-list>
-          <mat-list-item
+          <!-- <mat-list-item
             class="sidenav-list-parent"
             (click)="showSearchSubmenu = !showSearchSubmenu"
           >
@@ -37,6 +37,37 @@
           </mat-list-item>
           <div class="sidenav-list-divider">
             <mat-divider></mat-divider>
+          </div> -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title> Search </mat-panel-title>
+              <!-- <mat-panel-description>
+                This is a summary of the content
+              </mat-panel-description> -->
+            </mat-expansion-panel-header>
+            <!-- Content of the dropdown -->
+            <mat-list>
+              <mat-list-item>Car</mat-list-item>
+              <div class="sidenav-list-divider">
+                <mat-divider></mat-divider>
+              </div>
+              <mat-list-item>Motorcycle</mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title> Sell </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-list-item>Car</mat-list-item>
+              <div class="sidenav-list-divider">
+                <mat-divider></mat-divider>
+              </div>
+              <mat-list-item>Motorcycle</mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+          <div class="login-button">
+            <button mat-raised-button color="primary">Login</button>
           </div>
         </mat-nav-list>
       </mat-sidenav>

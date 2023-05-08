@@ -21,24 +21,35 @@ mat-sidenav {
     white-space: nowrap;
     justify-content: flex-end;
   }
-  .sidenav-list-item-content {
+  // Mat-list version
+  // .sidenav-list-item-content {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   width: 100%;
+  //   .sidenav-list-item-title {
+  //     // bold the title
+  //     font-weight: bold;
+  //   }
+  // }
+  .sidenav-list-divider {
+    padding: 0 16px;
+  }
+  .login-button {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
     width: 100%;
-    .sidenav-list-item-title {
-      // bold the title
-      font-weight: bold;
+    padding: 16px 0 0;
+    margin: 0 auto;
+    button {
+      width: calc(100% - 48px);
     }
   }
-  .sidenav-list-divider {
-    padding: 0 8px;
-  }
 
-  .spacer {
-    flex-grow: 1;
-    width: 1rem;
-  }
+  // .spacer {
+  //   flex-grow: 1;
+  //   width: 1rem;
+  // }
 }
 
 mat-sidenav-content {
