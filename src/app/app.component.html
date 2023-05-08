@@ -66,9 +66,17 @@
               <mat-list-item>Motorcycle</mat-list-item>
             </mat-list>
           </mat-expansion-panel>
-          <div class="login-button">
-            <button mat-raised-button color="primary">Login</button>
+          <div class="auth-button">
+            <button mat-raised-button color="primary" (click)="goToLogin()">
+              Login
+            </button>
           </div>
+          <!-- <div class="auth-button">or</div>
+          <div class="auth-button">
+            <button mat-raised-button color="accent" (click)="goToRegister()">
+              Register
+            </button>
+          </div> -->
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
