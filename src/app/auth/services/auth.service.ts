@@ -36,4 +36,8 @@ export class AuthService {
       token,
     });
   }
+
+  public getToken(): string | null {
+    return localStorage.getItem('jwtToken');
+  }
 }

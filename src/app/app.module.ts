@@ -11,7 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers, metaReducers } from './state/app.reducer';
 import { AuthEffects } from './auth/state/auth.effects';
 import { AuthModule } from './auth/auth.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 // Angular Material Modules
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -19,8 +19,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { TokenInterceptor } from './auth/services/token.interceptor';
+import { HomeComponent } from './pages/home/home.component';
+import { ProductSelectionMenubarComponent } from './components/product-selection-menubar/product-selection-menubar.component';
+import { MatDividerModule } from '@angular/material/divider';
 
-const COMPONENTS = [AppComponent];
+const COMPONENTS = [AppComponent, HomeComponent];
 
 const MATERIAL_MODULES = [
   MatSidenavModule,
@@ -28,6 +32,7 @@ const MATERIAL_MODULES = [
   MatIconModule,
   MatButtonModule,
   MatExpansionModule,
+  MatDividerModule,
 ];
 
 const MODULES = [
@@ -49,9 +54,15 @@ const MODULES = [
 ];
 
 @NgModule({
-  declarations: [COMPONENTS],
+  declarations: [COMPONENTS, ProductSelectionMenubarComponent],
   imports: [MODULES],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [COMPONENTS],
 })
 export class AppModule {}
