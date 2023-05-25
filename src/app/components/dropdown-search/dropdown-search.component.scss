@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  // max-width: 136px;
+}
+
+.divider-top, .divider-bottom {
+  height: 1px;
+  background-color: black;
+  pointer-events: none;
+}
+
+.divider-bottom {
+  margin-top: 2px;
+}
+
+// @media (max-width: 471px) {
+//   .container {
+//     width: 136px;
+//     // width: calc(100% - 148px)
+//   }
+// }

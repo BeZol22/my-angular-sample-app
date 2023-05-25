@@ -19,12 +19,23 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
+
+// Services
 import { TokenInterceptor } from './auth/services/token.interceptor';
+
+// Components
 import { HomeComponent } from './pages/home/home.component';
 import { ProductSelectionMenubarComponent } from './components/product-selection-menubar/product-selection-menubar.component';
-import { MatDividerModule } from '@angular/material/divider';
+import { DropdownSearchComponent } from './components/dropdown-search/dropdown-search.component';
 
-const COMPONENTS = [AppComponent, HomeComponent];
+const COMPONENTS = [
+  AppComponent,
+  HomeComponent,
+  ProductSelectionMenubarComponent,
+  DropdownSearchComponent,
+];
 
 const MATERIAL_MODULES = [
   MatSidenavModule,
@@ -33,6 +44,7 @@ const MATERIAL_MODULES = [
   MatButtonModule,
   MatExpansionModule,
   MatDividerModule,
+  MatSelectModule,
 ];
 
 const MODULES = [
@@ -54,7 +66,7 @@ const MODULES = [
 ];
 
 @NgModule({
-  declarations: [COMPONENTS, ProductSelectionMenubarComponent],
+  declarations: [COMPONENTS],
   imports: [MODULES],
   providers: [
     {
