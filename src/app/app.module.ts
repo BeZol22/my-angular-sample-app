@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from '../environments/environment';
 
 import { NavModule } from './nav/nav.module';
 import { StoreModule } from '@ngrx/store';
@@ -56,8 +57,7 @@ const MODULES = [
   HttpClientModule,
   NavModule,
   MATERIAL_MODULES,
-  StoreDevtoolsModule.instrument(),
-  // StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+  // StoreDevtoolsModule.instrument({ serialize: true }),
   StoreModule.forRoot(reducers, {
     metaReducers,
     runtimeChecks: {
@@ -67,6 +67,11 @@ const MODULES = [
   }),
   EffectsModule.forRoot([AuthEffects, SearchEffects]),
   // AuthModule.forRoot(),
+  StoreDevtoolsModule.instrument({
+    serialize: true,
+    maxAge: 25,
+    logOnly: environment.production,
+  }),
 ];
 
 @NgModule({
