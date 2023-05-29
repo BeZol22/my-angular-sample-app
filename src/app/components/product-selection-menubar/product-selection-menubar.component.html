@@ -1,8 +1,8 @@
 <div class="container">
   <div
     class="left-menu"
-    (click)="selectMenu('left')"
-    [class.selected]="selectedMenu === 'left'"
+    (click)="selectSearch('Cars')"
+    [class.selected]="selectedSearch === 'Cars'"
   >
     <mat-icon
       aria-hidden="false"
@@ -12,8 +12,8 @@
   </div>
   <div
     class="middle-menu-left"
-    (click)="selectMenu('middle-left')"
-    [class.selected]="selectedMenu === 'middle-left'"
+    (click)="selectSearch('Motorcycles')"
+    [class.selected]="selectedSearch === 'Motorcycles'"
   >
     <mat-icon
       aria-hidden="false"
@@ -26,8 +26,8 @@
   <div class="middle-menu-center"></div> -->
   <div
     class="middle-menu-right"
-    (click)="selectMenu('middle-right')"
-    [class.selected]="selectedMenu === 'middle-right'"
+    (click)="selectSearch('Trucks')"
+    [class.selected]="selectedSearch === 'Trucks'"
   >
     <mat-icon
       aria-hidden="false"
@@ -37,8 +37,8 @@
   </div>
   <div
     class="right-menu"
-    (click)="selectMenu('right')"
-    [class.selected]="selectedMenu === 'right'"
+    (click)="selectSearch('Buses')"
+    [class.selected]="selectedSearch === 'Buses'"
   >
     <mat-icon
       aria-hidden="false"

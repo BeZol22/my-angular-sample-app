@@ -1,6 +1,6 @@
 <form action="">
   <app-product-selection-menubar></app-product-selection-menubar>
-  <div class="filter-container">
+  <div class="filter-container" *ngIf="(selectedSearch$ | async) === 'Cars'">
     <app-dropdown-search [placeholder]="'Make'"></app-dropdown-search>
     <app-dropdown-search [placeholder]="'Model'"></app-dropdown-search>
     <app-dropdown-search [placeholder]="'Year from'"></app-dropdown-search>
@@ -10,7 +10,7 @@
     <app-dropdown-search [placeholder]="'Price from'"></app-dropdown-search>
     <app-dropdown-search [placeholder]="'Price to'"></app-dropdown-search>
   </div>
-  <div class="button-container">
+  <div class="button-container" *ngIf="(selectedSearch$ | async) === 'Cars'">
     <button mat-raised-button color="primary">Search</button>
   </div>
 </form>

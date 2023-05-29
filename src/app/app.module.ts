@@ -7,9 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NavModule } from './nav/nav.module';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers, metaReducers } from './state/app.reducer';
 import { AuthEffects } from './auth/state/auth.effects';
+import { SearchEffects } from './state/search.effects';
 import { AuthModule } from './auth/auth.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
@@ -54,6 +56,8 @@ const MODULES = [
   HttpClientModule,
   NavModule,
   MATERIAL_MODULES,
+  StoreDevtoolsModule.instrument(),
+  // StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   StoreModule.forRoot(reducers, {
     metaReducers,
     runtimeChecks: {
@@ -61,7 +65,7 @@ const MODULES = [
       strictActionImmutability: true,
     },
   }),
-  EffectsModule.forRoot([AuthEffects]),
+  EffectsModule.forRoot([AuthEffects, SearchEffects]),
   // AuthModule.forRoot(),
 ];
 
@@ -75,6 +79,6 @@ const MODULES = [
       multi: true,
     },
   ],
-  bootstrap: [COMPONENTS],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
