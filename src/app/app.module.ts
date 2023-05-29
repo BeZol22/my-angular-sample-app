@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -57,7 +57,6 @@ const MODULES = [
   HttpClientModule,
   NavModule,
   MATERIAL_MODULES,
-  // StoreDevtoolsModule.instrument({ serialize: true }),
   StoreModule.forRoot(reducers, {
     metaReducers,
     runtimeChecks: {
