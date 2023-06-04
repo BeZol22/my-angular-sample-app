@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AbstractControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-dropdown-search',
@@ -7,4 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class DropdownSearchComponent {
   @Input() placeholder: string = '';
+  @Input() form: FormGroup = new FormGroup({});
+  @Input() controlName: string = '';
+
+  get control(): AbstractControl {
+    return this.form.controls[this.controlName];
+  }
 }

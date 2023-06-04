@@ -32,6 +32,8 @@ import { TokenInterceptor } from './auth/services/token.interceptor';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductSelectionMenubarComponent } from './components/product-selection-menubar/product-selection-menubar.component';
 import { DropdownSearchComponent } from './components/dropdown-search/dropdown-search.component';
+import { SearchResultsComponent } from './pages/search-results/search-results.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const COMPONENTS = [
   AppComponent,
@@ -56,6 +58,8 @@ const MODULES = [
   BrowserAnimationsModule,
   HttpClientModule,
   NavModule,
+  FormsModule,
+  ReactiveFormsModule,
   MATERIAL_MODULES,
   StoreModule.forRoot(reducers, {
     metaReducers,
@@ -74,7 +78,7 @@ const MODULES = [
 ];
 
 @NgModule({
-  declarations: [COMPONENTS],
+  declarations: [COMPONENTS, SearchResultsComponent],
   imports: [MODULES],
   providers: [
     {

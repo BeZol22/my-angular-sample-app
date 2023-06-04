@@ -1,16 +1,55 @@
-<form action="">
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
   <app-product-selection-menubar></app-product-selection-menubar>
   <div class="filter-container" *ngIf="(selectedSearch$ | async) === 'Cars'">
-    <app-dropdown-search [placeholder]="'Make'"></app-dropdown-search>
-    <app-dropdown-search [placeholder]="'Model'"></app-dropdown-search>
-    <app-dropdown-search [placeholder]="'Year from'"></app-dropdown-search>
-    <app-dropdown-search [placeholder]="'Year to'"></app-dropdown-search>
-    <app-dropdown-search [placeholder]="'Mileage from'"></app-dropdown-search>
-    <app-dropdown-search [placeholder]="'Mileage to'"></app-dropdown-search>
-    <app-dropdown-search [placeholder]="'Price from'"></app-dropdown-search>
-    <app-dropdown-search [placeholder]="'Price to'"></app-dropdown-search>
+    <app-dropdown-search
+      [form]="searchForm"
+      controlName="make"
+      [placeholder]="'Make'"
+    ></app-dropdown-search>
+    <app-dropdown-search
+      [form]="searchForm"
+      controlName="model"
+      [placeholder]="'Model'"
+    ></app-dropdown-search>
+    <!-- <app-dropdown-search
+      [form]="searchForm"
+      controlName="yearFrom"
+      [placeholder]="'Year from'"
+    ></app-dropdown-search>
+    <app-dropdown-search
+      [form]="searchForm"
+      controlName="yearTo"
+      [placeholder]="'Year to'"
+    ></app-dropdown-search>
+    <app-dropdown-search
+      [form]="searchForm"
+      controlName="mileageFrom"
+      [placeholder]="'Mileage from'"
+    ></app-dropdown-search>
+    <app-dropdown-search
+      [form]="searchForm"
+      controlName="mileageTo"
+      [placeholder]="'Mileage to'"
+    ></app-dropdown-search>
+    <app-dropdown-search
+      [form]="searchForm"
+      controlName="priceFrom"
+      [placeholder]="'Price from'"
+    ></app-dropdown-search>
+    <app-dropdown-search
+      [form]="searchForm"
+      controlName="priceTo"
+      [placeholder]="'Price to'"
+    ></app-dropdown-search> -->
   </div>
   <div class="button-container" *ngIf="(selectedSearch$ | async) === 'Cars'">
-    <button mat-raised-button color="primary">Search</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="searchForm.invalid"
+    >
+      Search
+    </button>
   </div>
 </form>
